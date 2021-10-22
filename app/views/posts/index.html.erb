@@ -1,0 +1,21 @@
+<h1>Posts</h1>
+<h2><%= link_to "New Post", new_post_path %></h2>
+<table>
+  <tr>
+    <th>S.No.</th>
+    <th>Post</th>
+    <th>Actions</th>
+  </tr>
+  <% @posts.each.with_index(1) do |post, i| %>
+    <tr>
+      <td><%= i %></td>
+      <td><%= post.description %></td>
+      <td><%= link_to "Show", post_path(post.id) %></td>
+      <td><%= link_to "Comment", edit_post_path(post.id) %></td>
+      <% if post.user_id == current_user.id %>
+        <td><%= link_to "Edit", edit_post_path(post.id) %></td>
+        <td><%= link_to "Delete", post_path(post.id), method: 'delete', data: { confirm: "Are you Sure" } %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

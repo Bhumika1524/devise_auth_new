@@ -1,0 +1,12 @@
+<% if @post.errors.any? %>
+    <% @post.errors.full_messages.each do |msg| %>
+      <%= msg %>
+    <% end %>
+<% end %>
+<% if @post.user_id === current_user.id %>
+  <h1>Edit Post</h1>
+  <%= render "form", url: "/posts/#{@post.id}" %>
+<% else %>
+  <h1>New Comment</h1>
+  <%= render "comment_form", url: "/posts/#{@post.id}" %>
+<% end %>

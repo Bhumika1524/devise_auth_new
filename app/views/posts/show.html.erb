@@ -1,0 +1,14 @@
+<li><%= @post.description %></li>
+<table>
+<ul>
+  <% @comments.each.with_index(1) do |comment, i| %>
+    <tr>
+    <td><%= i %>.  <%= comment.description %></td>
+    <% if comment.user_id == current_user.id %>
+      <td><%= link_to "Edit", edit_post_comment_path(@post.id, comment.id) %></td>
+      <td><%= link_to "Delete", post_comment_path(@post.id,comment.id), method: 'delete', data: { confirm: "Are you Sure" } %></td>
+    <% end %>
+        </tr>
+  <% end %>
+</ul>
+</table>

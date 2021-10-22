@@ -1,0 +1,14 @@
+<%= form_for @post, url: url do |form| %>
+  <%= form.label :description, "Post :- " %>
+  <%= form.text_field :description %><br/><br/>
+  <div>
+    <%= form.fields_for :comments do |t| %>
+      <%= render "comment_fields", :f => t %>
+    <% end %>
+    <div>
+      <br>
+      <%= link_to_add_association "Add Comment", form, :comments %>
+    </div>
+  </div>
+  <%= form.submit %>
+<% end %>

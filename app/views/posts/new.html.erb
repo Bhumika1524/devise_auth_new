@@ -1,0 +1,8 @@
+<% if @post.errors.any? %>
+  <% @post.errors.full_messages.each do |msg| %>
+    <%= msg %>
+  <% end %>
+<% end %>
+<h1>New Post</h1>
+<!--<h3><%#= link_to "Add Comment", new_comment_path(@post.id) %></h3>-->
+<%= render "form", url: "/posts" %>
